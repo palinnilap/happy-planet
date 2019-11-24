@@ -1,0 +1,44 @@
+#:kivy 1.11.1
+
+<HappyGame>:    
+    button1: button_1
+    button2: button_2
+    button3: button_3
+    button4: button_4
+
+    Label:
+        font_size: 20 
+        center_x: root.width / 8
+        top: root.top
+        text: "0"
+
+    Label:
+        id: prompt
+        center_y: root.center_y
+        text: 'this is where the prompt goes'
+        height: root.height / 3
+        width: root.width
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+
+    BoxLayout:
+        orientation: 'vertical'
+        width: root.width
+        height: root.height / 3
+
+        Button:
+            id: button_1
+            text: 'sample text'
+            
+        Button:
+            id: button_2
+            text: 'Sample2'
+
+        Button:
+            id: button_3
+            text: 'sample text'
+        
+        Button:
+            id: button_4
+            text: 'Sample2'
