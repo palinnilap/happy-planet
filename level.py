@@ -1,12 +1,13 @@
 
-import random
+from random import randrange
+from typing import Tuple
+from challenge import Challenge
 
 class Level:
 
-    def __init__(self, challenge_tup):
-        self.challenge_tup = challenge_tup
+    def __init__(self, challenges : Tuple[Challenge]):
+        self._challenges = challenges
 
     def get_next_challenge(self):
-        return self.challenge_tup[
-            random.randrange(0, len(self.challenge_tup))
-        ]
+        rand = randrange(0, len(self._challenges))
+        return self._challenges[rand]
