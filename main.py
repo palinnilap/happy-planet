@@ -4,32 +4,40 @@ from kivy.properties import (
     ObjectProperty, StringProperty
 )
 from kivy.clock import Clock
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
 
 class HappyGame(Widget):
     HALF_GREY = [.5,.5,.5,1]
     FULL_GREY = [1,1,1,1]
+    PRESSED = 0
     button1 = ObjectProperty(None)
     button2 = ObjectProperty(None)
     button3 = ObjectProperty(None)
     button4 = ObjectProperty(None)
 
     def update(self, dt):
-        pass
+        '''main cycle for reacting to user input'''
+        if self.PRESSED:
+            print('button', self.PRESSED, 'was pressed')
+            self.PRESSED = 0
 
     def on_touch_down(self, touch):
+        '''lets update know which button was pressed and changes color'''
+        # this code is not DRY. kv language made simpler code very hard
         if self.button1.collide_point(*touch.pos):
+            self.PRESSED = 1
             self.button1.background_color = self.HALF_GREY
-            
         elif self.button2.collide_point(*touch.pos):
+            self.PRESSED = 2
             self.button2.background_color = self.HALF_GREY
         elif self.button3.collide_point(*touch.pos):
+            self.PRESSED = 3 
             self.button3.background_color = self.HALF_GREY
         elif self.button4.collide_point(*touch.pos):
+            self.PRESSED = 4
             self.button4.background_color = self.HALF_GREY
     
     def on_touch_up(self, touch):
+        '''turns all buttons back to default color'''
         self.button1.background_color = self.FULL_GREY
         self.button2.background_color = self.FULL_GREY
         self.button3.background_color = self.FULL_GREY
