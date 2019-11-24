@@ -1,19 +1,30 @@
 #:kivy 1.11.1
 
 <HappyGame>:    
+    score: action_count
+    happy_meter: happy
+    prompt: prompt_box
     button1: button_1
     button2: button_2
     button3: button_3
     button4: button_4
 
     Label:
+        id: action_count
         font_size: 20 
         center_x: root.width / 8
         top: root.top
         text: "0"
 
     Label:
-        id: prompt
+        id: happy
+        font_size: 20 
+        center_x: root.width * 7 / 8
+        top: root.top
+        text: "0"
+
+    Label:
+        id: prompt_box
         center_y: root.center_y
         text: 'this is where the prompt goes'
         height: root.height / 3

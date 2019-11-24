@@ -9,6 +9,9 @@ class HappyGame(Widget):
     HALF_GREY = [.5,.5,.5,1]
     FULL_GREY = [1,1,1,1]
     PRESSED = 0
+    score = ObjectProperty(None)
+    happy_meter = ObjectProperty(None)
+    prompt = ObjectProperty(None) 
     button1 = ObjectProperty(None)
     button2 = ObjectProperty(None)
     button3 = ObjectProperty(None)
@@ -17,13 +20,15 @@ class HappyGame(Widget):
     def update(self, dt):
         '''main cycle for reacting to user input'''
         if self.PRESSED:
-            print('button', self.PRESSED, 'was pressed')
+            self.prompt.text = ('button ' + str(self.PRESSED) + ' was pressed')
             self.PRESSED = 0
 
     def on_touch_down(self, touch):
         '''lets update know which button was pressed and changes color'''
-        # this code is not DRY. kv language made simpler code very hard
-        if self.button1.collide_point(*touch.pos):
+        # this code is not DRY. kv language made simpler code hard to write
+        if (self.button1.collide_point(*touch.pos)
+        # and challenge.prompt[1] != ""
+        ):
             self.PRESSED = 1
             self.button1.background_color = self.HALF_GREY
         elif self.button2.collide_point(*touch.pos):
