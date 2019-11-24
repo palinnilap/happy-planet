@@ -1,7 +1,7 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import (
-    ObjectProperty
+    ObjectProperty, StringProperty
 )
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
@@ -18,6 +18,7 @@ class HappyGame(Widget):
 
     def on_touch_down(self, touch):
         if self.button1.collide_point(*touch.pos):
+            self.button1.background_color = [.5,.5,.5,1]
             print('button1 pushed')
         elif self.button2.collide_point(*touch.pos):
             print('button2 pushed')
@@ -26,6 +27,16 @@ class HappyGame(Widget):
         elif self.button4.collide_point(*touch.pos):
             print('button4 pushed')
     
+    def on_touch_up(self, touch):
+        if self.button1.collide_point(*touch.pos):
+            self.button1.background_color = [1,1,1,1]
+            print('button1 pushed')
+        elif self.button2.collide_point(*touch.pos):
+            print('button2 pushed')
+        elif self.button3.collide_point(*touch.pos):
+            print('button3 pushed')
+        elif self.button4.collide_point(*touch.pos):
+            print('button4 pushed')
 class HappyApp(App):
     def build(self):
         game = HappyGame()
