@@ -8,6 +8,7 @@
     button2: button_2
     button3: button_3
     button4: button_4
+    score_updater: score_update
 
     Label:
         id: action_count
@@ -26,7 +27,17 @@
     Label:
         id: prompt_box
         center_y: root.center_y
-        text: 'this is where the prompt goes'
+        text: 'error'
+        height: root.height / 3
+        width: root.width
+        text_size: self.size
+        halign: 'center'
+        valign: 'middle'
+
+    Label:
+        id: score_update
+        center_y: root.center_y
+        text: 'error'
         height: root.height / 3
         width: root.width
         text_size: self.size
