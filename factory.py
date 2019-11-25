@@ -11,13 +11,13 @@ def create_gameloop():
 
 def create_level_1():
     prompt1 = ('What a nice day!\nWhat would you like to do?')
-    choices1 = ('Smile', 'Laugh', 'Hugs', 'Yays')
-    ans_vals1 = (3,5,-10,0)
+    choices1 = ('Smile', 'Laugh', 'Hugs', 'Cry')
+    ans_vals1 = (3,5,-10,-1)
     ans_expl1 =  (
         "Show them pearls!", 
-        'The best medicine!\n(this statement has not been approved by the FDA)',
-        'You chose a bear. One armed hugs are all you are giving from now on.',
-        'Some people do not have it as good as you, be more thoughtful.'
+        'The best medicine!\n\n(this statement has not been approved by the FDA)',
+        'You chose a bear.\nFrom now on, your hugs will all be one-armed.',
+        'Well, you haven\'t quite gotten the hang of this game yet...'
     ) 
     challenge1 = Challenge(prompt1, choices1, ans_vals1, ans_expl1)
     

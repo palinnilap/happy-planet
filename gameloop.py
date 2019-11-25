@@ -22,5 +22,6 @@ class GameLoop:
     def check_happy(self):
         pass
 
-        
+    def get_score_happy(self):
+        return str(self._player._score), str(self._player._happy)
 
