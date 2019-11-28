@@ -8,8 +8,9 @@ import factory
 import time
 
 class HappyGame(Widget):
-    HALF_GREY = [.5,.5,.5,1]
-    FULL_GREY = [1,1,1,1]
+    BUTTON_DN = [.5,.5,.5,1]
+    BUTTON_UP = [1,1,1,1]
+    BUTTON_DISABLED = [0,0,0,0]
     
     #uix elements
     score = ObjectProperty(None)
@@ -113,6 +114,15 @@ class HappyGame(Widget):
         self.button3.text = self.cur_challenge.get_choices()[2]
         self.button4.text = self.cur_challenge.get_choices()[3]
 
+        if self.cur_challenge.get_choices()[0] = '':
+            self.button1.background_color = self.BUTTON_DISABLED
+        if self.cur_challenge.get_choices()[1] = '':
+            self.button2.background_color = self.BUTTON_DISABLED
+        if self.cur_challenge.get_choices()[2] = '':
+            self.button3.background_color = self.BUTTON_DISABLED
+        if self.cur_challenge.get_choices()[3] = '':
+            self.button4.background_color = self.BUTTON_DISABLED
+        
     def on_touch_down(self, touch):
         '''lets self.update know which button was pressed. changes color'''
         # this code is not DRY. kv language made simpler code hard to write
@@ -120,23 +130,23 @@ class HappyGame(Widget):
             return
         if self.button1.collide_point(*touch.pos):
             self.PRESSED = 1
-            self.button1.background_color = self.HALF_GREY
+            self.button1.background_color = self.BUTTON_DN
         elif self.button2.collide_point(*touch.pos):
             self.PRESSED = 2
-            self.button2.background_color = self.HALF_GREY
+            self.button2.background_color = self.BUTTON_DN
         elif self.button3.collide_point(*touch.pos):
             self.PRESSED = 3 
-            self.button3.background_color = self.HALF_GREY
+            self.button3.background_color = self.BUTTON_DN
         elif self.button4.collide_point(*touch.pos):
             self.PRESSED = 4
-            self.button4.background_color = self.HALF_GREY
+            self.button4.background_color = self.BUTTON_DN
     
     def on_touch_up(self, touch):
         '''turns all buttons back to default color'''
-        self.button1.background_color = self.FULL_GREY
-        self.button2.background_color = self.FULL_GREY
-        self.button3.background_color = self.FULL_GREY
-        self.button4.background_color = self.FULL_GREY
+        self.button1.background_color = self.BUTTON_UP
+        self.button2.background_color = self.BUTTON_UP
+        self.button3.background_color = self.BUTTON_UP
+        self.button4.background_color = self.BUTTON_UP
             
 class HappyApp(App):
     def build(self):
