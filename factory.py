@@ -6,13 +6,13 @@ from gameloop import GameLoop
 
 def create_gameloop():
     player = Player(25)
-    levels = (create_level_1(), 'fake')
-    return GameLoop(player, levels, 0)
+    levels = (create_level_1(), create_level_1(), create_level_1(), create_level_1(), create_level_1(), create_level_1())
+    return GameLoop(player, levels, 1)
 
 def create_level_1():
     prompt1 = ('What a nice day!\nWhat would you like to do?')
     choices1 = ('Smile', 'Laugh', 'Hugs', 'Cry')
-    ans_vals1 = (3,5,-10,-1)
+    ans_vals1 = (3,25,-10,-1)
     ans_expl1 =  (
         "Show them pearls!", 
         'The best medicine!\n\n(this statement has not been approved by the FDA)',

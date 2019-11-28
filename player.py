@@ -12,4 +12,6 @@ class Player():
     def add_score(self, val):
         self._score += val
 
-    
+    @property
+    def happy(self):
+        return self._happy
