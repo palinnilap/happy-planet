@@ -12,14 +12,13 @@ class GameLoop:
         self._levels = main_levels
         self._player = player
         self._cur_lev_num = 0
-        self._cur_lev = None
+        self._cur_lev = lev_tutorial
         self._level_won = lev_won
         self._level_lost = lev_lost
         self._status = 0  
             #  0  --> in progress
             #  1  --> won
             # -1  --> lost
-        self._set_level (start_lev)
 
     @property
     def level_rgbs(self):
@@ -51,8 +50,12 @@ class GameLoop:
         self.check_happy()
 
     def check_happy(self):
-        if self._player.happy <= 0:
+        if self._player.happy == -2019:
+            #you are in the tutorial, do nothing.
+            return
+        elif self._player.happy <= 0:
             self._change_status(-1)
+            self._cur_lev = self._level_lost
         elif self._player.happy < 25:
             self._set_level(0)
         elif self._player.happy < 50:
@@ -63,6 +66,7 @@ class GameLoop:
             self._set_level(3)
         elif self._player.happy > 100:
             self._change_status(1)
+            self._cur_lev = self._level_won
 
     def _set_level(self, lev_num : int):
         self._cur_lev_num = lev_num
@@ -83,6 +87,8 @@ class GameLoop:
         elif self._status == 1:  #won
             return [1,.8,0,1], [.7,0,0,1]
 
+        elif self._player.happy == -2019:
+            return [1,.8,0,1], [.7,0,0,1]
         elif self._cur_lev_num == 0:
             return [.2,.2,.5,1], [.1,.1,.3,1]
         elif self._cur_lev_num == 1:
@@ -93,7 +99,9 @@ class GameLoop:
             return [1,.1,.1,1], [.2,.2,.2,1]
 
     def _get_emoji(self):
-        if self._player._happy < 10:
+        if self._player.happy == -2019:
+            return '(•_•)'
+        elif self._player._happy < 10:
             return r'.·´¯`(>_<)´¯`·.'
         elif self._player._happy < 25:
             return r'¯\_(•_•)_/¯'
@@ -102,7 +110,7 @@ class GameLoop:
         elif self._player._happy < 75:
             return '(^__^)'
         elif self._player._happy >= 75:
-            return r'¯\(^__^)/¯'
+            return r'*\(^__^)/*'
 
 
 #kivy apparently doesn't deal well with unicode characters :(

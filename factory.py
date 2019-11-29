@@ -1,12 +1,12 @@
 from challenge import Challenge
-from level import Level
+from level import Level, LevelSequential
 from player import Player
 from gameloop import GameLoop
 
 def create_gameloop():
-    player = Player(25)
+    player = Player(-2019)
     levels = (create_level_0(), create_level_1(), create_level_2(), create_level_3())
-    return GameLoop(player, levels, 1)
+    return GameLoop(player, levels, 1, create_tut_lev(), create_won_lev(), create_lost_lev())
 
 def create_level_0():
     challenges = (
@@ -31,6 +31,25 @@ def create_level_3():
         challenge30(), challenge31(), challenge32(), challenge33()
     )
     return Level(challenges)
+
+def create_tut_lev():
+    challenges = (
+        challenge_t0(), challenge_t1()
+    )
+    return LevelSequential(challenges)
+
+def create_lost_lev():
+    challenges = (
+        challenge_lost0()
+    )
+    return LevelSequential(challenges)
+
+def create_won_lev():
+    challenges = (
+        challenge_won0()
+    )
+    return LevelSequential(challenges)
+
 
 ############ level 0 #############################
 
@@ -229,5 +248,60 @@ def challenge33():
         'DON\'T YOU SEE THE HAPPYS YOU ARE MISSING?! QUITE YOUR JOB. EAT TWINKIES UNTIL YOU PUKE. DO WHATEVER YOU MUST TO ACQUIRE LOLS',
         'Great idea, but it didn\'t do enough. PUNCH HIM AGAIN UNTIL HE FEELS THE LOVE',
         'NO. NO ONE CAN MISS OUT ON THIS. THEY MUST FEEL THE JOY.'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+############ Tutorial #############################
+
+def challenge_t0():
+    prompt = ('''H  A  P  P  Y \n\nP  L  A  N  E  T''')
+    choices = ('', '', '', 'continue')
+    ans_vals = (0,0,0,0)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        'by palinnilap and dragongirl'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_t1():
+    prompt = ('''You will be given 25 mood to start.\n\n
+    Don\'t screw this up.''')
+    choices = ('', '', 'Start Game', '')
+    ans_vals = (0,0,2019+25,0)
+    ans_expl =  (
+        '', 
+        '',
+        'Time to make the world a happy place',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+############ Lost #############################
+
+def challenge_lost0():
+    prompt = ('''Congratulations. You lost.''')
+    choices = ('', '', '', 'I want to try again.')
+    ans_vals = (0,0,0,0)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        'What about "you lost" was hard to understand?'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+############ Won #############################
+
+def challenge_won0():
+    prompt = ('''Congratulations. You won. But unfortunately, the programmer hasn't put the awesome stuff here he planned to yet.''')
+    choices = ('', '', '', 'I am the best.')
+    ans_vals = (0,0,0,0)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        'Yes, our jolly monarch, you are.'
     ) 
     return Challenge(prompt, choices, ans_vals, ans_expl)
