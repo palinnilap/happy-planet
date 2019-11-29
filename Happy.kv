@@ -2,6 +2,7 @@
 
 <HappyGame>:    
     score: action_count
+    emoji: emoticon
     happy_meter: happy
     prompt: prompt_box
     button1: button_1
@@ -18,6 +19,13 @@
         text: "0"
 
     Label:
+        id: emoticon
+        font_size: 20 
+        center_x: root.width / 2
+        top: root.top
+        text: "(⨪_⨪)"
+    
+    Label:
         id: happy
         font_size: 20 
         center_x: root.width * 7 / 8
@@ -26,9 +34,10 @@
 
     Label:
         id: prompt_box
-        center_y: root.center_y
+        center_y: root.center_y 
         font_size: 20
         text: 'error'
+        padding_x: 15
         height: root.height / 3
         width: root.width
         text_size: self.size
@@ -37,7 +46,7 @@
 
     Label:
         id: score_update
-        center_y: root.height * 6 / 8
+        center_y: root.height * 13 / 16
         center_x: root.width / 2
         text: ''
         font_size: 40
@@ -50,18 +59,35 @@
         width: root.width
         height: root.height / 3
 
+
         Button:
             id: button_1
             text: 'sample text1'
-            
+            font_size: 14
+            text_size: root.width, None
+            halign: 'center'
+            padding_x: 10
+
         Button:
             id: button_2
             text: 'Sample2'
+            font_size: 14
+            text_size: root.width, None
+            halign: 'center'
+            padding_x: 10
 
         Button:
             id: button_3
             text: 'sample text3'
-        
+            font_size: 14
+            text_size: root.width, None
+            halign: 'center'
+            padding_x: 10
+
         Button:
             id: button_4
             text: 'Sample4'
+            font_size: 14
+            text_size: root.width, None
+            halign: 'center'
+            padding_x: 10

@@ -15,6 +15,7 @@ class HappyGame(Widget):
     
     #uix elements
     score = ObjectProperty(None)
+    emoji = ObjectProperty(None)
     happy_meter = ObjectProperty(None)
     score_updater = ObjectProperty(None)
     prompt = ObjectProperty(None) 
@@ -66,7 +67,6 @@ class HappyGame(Widget):
         self.gameloop.submit_results(1, val) #score always increments by 1
         Clock.schedule_once(lambda dt: self.display_score_update(val), .5)
         Clock.schedule_once(lambda dt: self.display_expl(expl), 1)
-        #Clock.schedule_once(lambda dt: self.set_scores(), 4)
         Clock.schedule_once(lambda dt: self.set_buttons_to_continue(), 2)
         Clock.schedule_once(lambda dt: self.enable_buttons(), 2)
 
@@ -112,9 +112,9 @@ class HappyGame(Widget):
             return str(val)
 
     def set_scores(self) -> None:
-        score, happy = self.gameloop.get_score_happy()
-        self.score.text = score
-        self.happy_meter.text = happy 
+        self.score.text = self.gameloop.score
+        self.emoji.text = self.gameloop.emoji
+        self.happy_meter.text = self.gameloop.happy
 
     def populate_challenge(self) -> None:
         self.prompt.text = self.cur_challenge.get_prompt()
@@ -159,11 +159,7 @@ class HappyGame(Widget):
             self.button4.background_color = self.BUTTON_DN
     
     def on_touch_up(self, touch):
-        '''turns all buttons back to default color'''
-        # self.button1.background_color = self.BUTTON_UP
-        # self.button2.background_color = self.BUTTON_UP
-        # self.button3.background_color = self.BUTTON_UP
-        # self.button4.background_color = self.BUTTON_UP
+        pass
 
     def check_status(self):
          if self.gameloop.status == 1:
