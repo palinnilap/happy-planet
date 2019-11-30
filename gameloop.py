@@ -109,36 +109,7 @@ class GameLoop:
             return '(•_•)'
         elif self._player._happy < 75:
             return '(^__^)'
-        elif self._player._happy >= 75:
+        elif self._player._happy < 100:
             return r'*\(^__^)/*'
-
-
-#kivy apparently doesn't deal well with unicode characters :(
-# r'''
-# ( ಥ_ಥ )
-# ¯\_(⊙︿⊙)_/¯
-# (;︵;)
-# .·´¯`(>▂<)´¯`·.
-# (ၜ︗ၜ) 
-# ლ(ಠ_ಠლ)
-
-# (⨪_⨪)
-# (•_•)
-# (◉ܫ◉)
-# (•ᴗ•)
-
-# (ၜᗝ ၜ) 
-# (^ ᗜ ^)
-# (◕‿◕✿)
-# ( ဖ ͜ စ)
-
-# (ꙨပꙨ)
-# (^‿^)
-# (◉⩊◉)
-# (•̀ᴗ•́)و
-
-# (≧ ᗜ ≦)
-# ᕦ(ò_óˇ)ᕤ
-# (⊙_◎)
-# (ↈ_ↈ)
-# '''
+        elif self._player._happy >= 100:
+            return r'*(0_o)*'

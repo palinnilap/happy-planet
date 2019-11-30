@@ -40,13 +40,15 @@ def create_tut_lev():
 
 def create_lost_lev():
     challenges = (
-        challenge_lost0()
+        challenge_lost0(), challenge_lost0()
     )
     return LevelSequential(challenges)
 
 def create_won_lev():
     challenges = (
-        challenge_won0()
+        challenge_won0(), challenge_won1(), challenge_won2(), challenge_won3(),
+        challenge_won4(), challenge_won5(), challenge_won6(), challenge_won7(),
+        challenge_won8(), challenge_won9(), challenge_won10()
     )
     return LevelSequential(challenges)
 
@@ -54,7 +56,7 @@ def create_won_lev():
 ############ level 0 #############################
 
 def challenge00():
-    prompt = '''Your mood is low. 
+    prompt = '''Your mood is low.\n
     You feel so sad even snuggling a baby bulldog wouldn't cheer you up.
     What do you do?'''
     choices = ('Call Stan', 'Eat something', 'Fetal position', 'Pep talk')
@@ -99,11 +101,11 @@ def challenge03():
     prompt = '''Your mood is low.\n\nYou are always talking to yourself. What are you saying right now?'''
     choices = ('I have the personality of a sponge', 
         'I\'m pretty sure the only reason my friends like me is because I have a pogo stick.',
-        'I wish my face was a pogo stick', 'Life is like my underwear. It doesn\'nt change.')
+        'I wish my face was a pogo stick', 'Life is like my underwear. It doesn\'t change.')
     ans_vals = (-1,-1,-1,-1)
     ans_expl =  (
         'Oddly enough, so do sponges.', 
-        'Imagine if you DID\'NT have that pogo stick then.', 
+        'Imagine if you DIDN\'T have that pogo stick then.', 
         'That is the weirdest thing I have ever heard.',
         'Bruh, change them drawers.'
     ) 
@@ -242,10 +244,10 @@ def challenge33():
     'SCREAM in his face like A DRILL SERGEANT OF HAPPINESS until FEELS THE HAPPYS to the core of his middle-aged being', 
     'Punch him on the shoulder and say, "JOY BUGGY"', 
     'Keep walking. Don\'t let him vampire your joy.')
-    ans_vals = (0,5,2,-10)
+    ans_vals = (-5,5,2,-10)
     ans_expl =  (
         'He did not give you a high five back. Your face burns with the indignation of unrequited love.', 
-        'DON\'T YOU SEE THE HAPPYS YOU ARE MISSING?! QUITE YOUR JOB. EAT TWINKIES UNTIL YOU PUKE. DO WHATEVER YOU MUST TO ACQUIRE LOLS',
+        'DON\'T YOU SEE THE HAPPYS YOU ARE MISSING?! QUIT YOUR JOB. EAT TWINKIES UNTIL YOU PUKE. DO WHATEVER YOU MUST TO ACQUIRE LOLS',
         'Great idea, but it didn\'t do enough. PUNCH HIM AGAIN UNTIL HE FEELS THE LOVE',
         'NO. NO ONE CAN MISS OUT ON THIS. THEY MUST FEEL THE JOY.'
     ) 
@@ -295,13 +297,148 @@ def challenge_lost0():
 ############ Won #############################
 
 def challenge_won0():
-    prompt = ('''Congratulations. You won. But unfortunately, the programmer hasn't put the awesome stuff here he planned to yet.''')
+    prompt = ('''You HaVE DONE IT!  YOu HAvE REACHED PeaK hAPPINESS! HWAAHHAHA ''')
     choices = ('', '', '', 'I am the best.')
-    ans_vals = (0,0,0,0)
+    ans_vals = (0,0,0,1000)
     ans_expl =  (
         '', 
         '',
         '',
         'Yes, our jolly monarch, you are.'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won1():
+    prompt = ('''BuT LOOK AT THEM, UNHAPPY mAsseS. ''')
+    choices = ('', '', 'SOMEthing must be DONE!', '')
+    ans_vals = (0,0,1324,1000)
+    ans_expl =  (
+        '', 
+        '',
+        'WhY DO YOU nOT SeE WHAT HAPpYS ARe FOR YOUR TAKINg, PEOpLES OF THE WORLD?!',
+        '.'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won2():
+    prompt = ('''SHOULDN\'T YoU DO SOmEtHING ABOUT THEM? theIR MISERy MUsTN\'T ToUCh YOu! ''')
+    choices = ('YES!', 'No', '', '')
+    ans_vals = (9999,9999,1000,0)
+    ans_expl =  (
+        'OF COURSE WE SHOULD! WHY WOULDN\'T WE?!', 
+        'THAT IS CRAZY TALK MY FRIEND, WE MUST GIVE THEM OUR GIFT',
+        '',
+        '.'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won3():
+    prompt = ('''BUT HOw CaN WE GIVE OuR gIFT?''')
+    choices = ('USE THE SKY', 'A ROCKET OF GOOD TIDINGS', 'VIRUS OF JOY', '')
+    ans_vals = (89764,89764,89764,89764)
+    ans_expl =  (
+        'YES, OF COURSE, WE cAN SpREAD THE JOY THROUGH THE hEAVENS', 
+        'bOMBs HAvE DeSTRoYED BUt OURs CAN GIVE LIFE!',
+        'HAPPINESS GOES VIRAL',
+        '.'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won4():
+    prompt = ('''Sir, the ROCKET is READY. WE WILL SPREAD OUR JOY THROUGHOUT THE EARTH''')
+    choices = ('HIt thE BUTToN', 'I\m having second thoughts', '', '')
+    ans_vals = (1001,1010,1001,1001)
+    ans_expl =  (
+        '3... 2... 1... Isn\'t it beautiful, sir?', 
+        'WE HAVE COME TOO FAR. THERE IS NO BACKING OUT NOW!!\n\n*hits button for you',
+        '',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won5():
+    prompt = ('''You drive out to the city to see what happens.
+    For a long time nothing, then blinding light, a ferocious wind, and ...''')
+    choices = ('HIt thE BUTToN', 'I\m having second thoughts', '', '')
+    ans_vals = (1000,1000,1000,1000)
+    ans_expl =  (
+        'Continue', 
+        '',
+        '',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won6():
+    prompt = ('''It\'s working! The initial shock has washed off and people push themselves off the ground and back to their feet.
+    And they are... happy.. smiling... laughing ''')
+    choices = ('', 'This laughter is truly inFECTIous!', '', '')
+    ans_vals = (1000,9999,1000,1000)
+    ans_expl =  (
+        '', 
+        'IT WORKED! UtOPIA HAs cOME!!!!!',
+        '',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won7():
+    prompt = ('''bUT WAIT. PeOPLE can\'t stop laughing. They can't talk. They can\'t eat.\n
+    The uproar of the city takes on an ominous tone.''')
+    choices = ('', '', '', 'HAHAHAHA!!')
+    ans_vals = (1000,9999,100000,1000)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        'Sir?'
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won8():
+    prompt = ('''Sir, you haven't slept or ate for days!!!''')
+    choices = ('', 'HAHAHAHAH!!!!!', '', '')
+    ans_vals = (1000,9999,100000,1000)
+    ans_expl =  (
+        '', 
+        'Sir, you should.... heh.. ha... HAHAHAHA!!',
+        '',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won9():
+    prompt = ('''HAHAHAH hahaha h...''')
+    choices = ('', '', 'ha ... ha .... h', '')
+    ans_vals = (1000,9999,100000,1000)
+    ans_expl =  (
+        '', 
+        '',
+        'h',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won10():
+    prompt = ('''...''')
+    choices = ('...', '', '', '')
+    ans_vals = (10000000,9999,100000,1000)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        ''
+    ) 
+    return Challenge(prompt, choices, ans_vals, ans_expl)
+
+def challenge_won10():
+    prompt = ('''GAME OVER''')
+    choices = ('', '', '', '')
+    ans_vals = (1000,9999,100000,1000)
+    ans_expl =  (
+        '', 
+        '',
+        '',
+        ''
     ) 
     return Challenge(prompt, choices, ans_vals, ans_expl)
